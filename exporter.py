@@ -3,7 +3,7 @@ from prometheus_client.core import GaugeMetricFamily, REGISTRY
 from prometheus_client import start_http_server
 from script import script
 
-export = script()
+results = script()
 
 # iterate over results and add metrics for each url in grafana docs
 class CustomCollector(object):
@@ -11,10 +11,10 @@ class CustomCollector(object):
         pass
 
     def collect(self):
-        for dict in export:
-            for item in dict:
+        for result in results:
+            for item in result:
                 g = GaugeMetricFamily("FleschScore", 'Help text', labels=["url"])
-                g.add_metric([item], dict[item])
+                g.add_metric([item], result[item])
                 yield g
 
 
