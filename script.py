@@ -4,6 +4,7 @@ from readability import Readability
 import git 
 
 def script():
+    # replace these filepaths with your own
     repo_path = '/Users/zuchka/code/grafana/'
     docs_path = '/Users/zuchka/code/grafana/docs/sources/'
     url_path  = 'https://grafana.com/docs/grafana/latest/'
@@ -25,7 +26,7 @@ def script():
     urls     =  map(lambda x: re.sub(r'.*sources/', url_path, x), strip_md)
 
     # scrape urls, extract text (everything inside <p> tags, minus code), and analyze
-    export      = []
+    export = []
 
     for url in urls:
         session = HTMLSession()
