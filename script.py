@@ -1,7 +1,8 @@
 import os, re
 from requests_html import HTMLSession
 from readability import Readability
-import git 
+import git
+from functools import reduce
 
 def script():
     # replace these filepaths with your own
@@ -27,6 +28,7 @@ def script():
 
     # scrape urls, extract text (everything inside <p> tags, minus code), and analyze
     export = []
+    values = []
 
     for url in urls:
         session = HTMLSession()
@@ -45,5 +47,13 @@ def script():
         flesch   = analysis.flesch()
         response = {url: flesch.score} 
         export.append(response)
+        values.append(flesch.score)
+    
+    # reduce values to one sum, count the docs, find overall average, and append to results
+    values_sum = reduce(lambda a, b: a + b, values)
+    docs_sum = len(export)
+    flesch_average = values_sum / docs_sum
+    export.append({'flesch_average': flesch_average})
+    export.append({'docs_sum': docs_sum})
     
     return export
