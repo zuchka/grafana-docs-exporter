@@ -22,4 +22,4 @@ if __name__ == '__main__':
     start_http_server(8000)
     REGISTRY.register(CustomCollector())
     while True:
-        time.sleep(60)
+        time.sleep(3600)
