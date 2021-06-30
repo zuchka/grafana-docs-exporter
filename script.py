@@ -5,8 +5,8 @@ import git
 
 def script():
     # replace these filepaths with your own
-    repo_path = '/Users/zuchka/code/grafana/'
-    docs_path = '/Users/zuchka/code/grafana/docs/sources/'
+    repo_path = '/home/zuchka/grafana/'
+    docs_path = '/home/zuchka/grafana/docs/sources/'
     url_path  = 'https://grafana.com/docs/grafana/latest/'
     md_suffix = re.compile(".*md$")
 
