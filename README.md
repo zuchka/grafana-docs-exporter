@@ -2,16 +2,16 @@
 
 ### A Prometheus exporter for monitoring & analyzing Grafana Labs' technical documentation
 
-[public endpoint](https://readability.zuchka.dev)
+[Here is the public endpoint](https://readability.zuchka.dev).
 
 ![grafana-docs-exporter dashboard](./dashboard.png)
 
-This exporter uses `git` to pull the newest versions of Grafana's documentation from the official repo. It then programmatically builds all the URLs to scrape those pages, just like Hugo does when it builds the actual documentation pages. These URLs are then scraped, parsed, analyzed, and exposed in Prometheus format for scraping. 
+This exporter uses `git` to pull the newest versions of Grafana's docs from the official repo. It then programmatically builds all the URLs to scrape those pages, just like Hugo does when it builds the actual docs website. These URLs are then scraped, parsed, analyzed, and exposed in Prometheus format. 
 
 To add these metrics to your own Prometheus instance, just add this job to your `prometheus.yml`:
 
 ```yml
-  - job_name: 'grafanadocs_hosted'
+  - job_name: 'grafana_docs'
     scheme: https
     metrics_path: '/'
     static_configs:
