@@ -1,0 +1,9 @@
+[Unit]
+Description=Grafana Docs Exporter
+
+[Service]
+ExecStart=/home/zuchka/.venvs/readability/bin/python3 /home/zuchka/grafana-docs-exporter/exporter.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
