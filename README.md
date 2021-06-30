@@ -2,4 +2,6 @@
 
 ### A Prometheus exporter for monitoring & analyzing Grafana Labs' technical documentation
 
-![grafan-docs-exporter dashboard](./dashboard.png)
+[public endpoint](https://readability.zuchka.dev)
+
+![grafana-docs-exporter dashboard](./dashboard.png)
