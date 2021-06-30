@@ -28,7 +28,7 @@
       },
       "id": 10,
       "options": {
-        "content": "# grafana-docs\n\n## readability\n\nThis dashboard tracks the readability of Grafana Lab's documentation over time. It uses the Flesch Reading Ease score (FRE) to calculate difficulty.\n\nThe FRE is a trusted metric developed in the 1970s by the United States Navy. It's still widely used throughout many industries (and languages).\n\nWith an upper boundary of `122` (e.g. \"The cat sat.\"), a score of `60` or higher is considered ideal for a general web audience. \n\nThe nature of technical documentation, however, makes this a challenging goal.",
+        "content": "# grafana-docs\n\n## readability\n\nThis dashboard tracks the readability of Grafana Lab's documentation over time. It uses the Flesch Reading Ease score (FRE) to calculate difficulty.\n\nThe FRE is a trusted metric developed in the 1970s by the United States Navy and it is still used throughout many industries around the globe.\n\nWith an upper boundary of `122` (e.g. \"The cat sat.\"), a score of `60` or higher is considered ideal for a general web audience. \n\nThe nature of technical documentation, however, makes this a challenging goal.",
         "mode": "markdown"
       },
       "pluginVersion": "8.0.0",
@@ -36,7 +36,7 @@
       "type": "text"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -120,11 +120,12 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{}",
+          "expr": "FleschScore{job=\"grafanadocs_hosted\"}",
           "format": "table",
           "instant": true,
           "interval": "",
           "legendFormat": "",
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
@@ -133,7 +134,7 @@
       "type": "histogram"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -197,10 +198,17 @@
           "instant": true,
           "interval": "",
           "legendFormat": "",
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
       "title": "Average FRE for G-Docs",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {}
+        }
+      ],
       "type": "gauge"
     },
     {
@@ -216,7 +224,7 @@
         "mode": "spectrum"
       },
       "dataFormat": "timeseries",
-      "datasource": null,
+      "datasource": "Prometheus",
       "gridPos": {
         "h": 11,
         "w": 8,
@@ -235,11 +243,10 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore",
-          "format": "time_series",
-          "instant": false,
+          "expr": "FleschScore{}",
           "interval": "",
           "legendFormat": "",
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
@@ -269,7 +276,7 @@
       "yBucketSize": null
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -350,6 +357,7 @@
           "instant": true,
           "interval": "",
           "legendFormat": "",
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
@@ -372,7 +380,7 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -428,6 +436,7 @@
           "instant": true,
           "interval": "",
           "legendFormat": "",
+          "queryType": "randomWalk",
           "refId": "A"
         }
       ],
@@ -449,5 +458,5 @@
   "timezone": "",
   "title": "Grafana Documentation",
   "uid": "mw15BHknk",
-  "version": 10
+  "version": 13
 }
