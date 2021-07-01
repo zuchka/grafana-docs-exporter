@@ -109,8 +109,7 @@
           "calcs": [
             "min",
             "mean",
-            "max",
-            "count"
+            "max"
           ],
           "displayMode": "table",
           "placement": "bottom"
@@ -120,7 +119,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{job=\"grafanadocs_hosted\"}",
+          "expr": "flesch_score{job=\"grafanadocs_hosted\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -142,6 +141,7 @@
           },
           "mappings": [],
           "max": 122,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -183,7 +183,7 @@
             "mean"
           ],
           "fields": "",
-          "values": false
+          "values": true
         },
         "showThresholdLabels": false,
         "showThresholdMarkers": true,
@@ -193,7 +193,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{}",
+          "expr": "average_fre{job=\"grafanadocs_hosted\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -238,18 +238,24 @@
       "legend": {
         "show": true
       },
+      "maxDataPoints": null,
       "pluginVersion": "8.0.0",
       "reverseYBuckets": true,
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{}",
+          "expr": "flesch_score{job=\"grafanadocs_hosted\"}",
+          "format": "time_series",
+          "instant": false,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "",
           "queryType": "randomWalk",
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "FRE Distribution Over Time",
       "tooltip": {
         "show": true,
@@ -352,7 +358,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{}",
+          "expr": "flesch_score{job=\"grafanadocs_hosted\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -420,7 +426,7 @@
             "count"
           ],
           "fields": "",
-          "values": false
+          "values": true
         },
         "text": {
           "valueSize": 100
@@ -431,7 +437,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "FleschScore{}",
+          "expr": "docs_sum{job=\"grafanadocs_hosted\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -442,6 +448,180 @@
       ],
       "title": "Total # of Docs in \"/latest\"",
       "type": "stat"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "# of docs",
+          "mappings": [],
+          "max": 425,
+          "min": 410,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "docs_sum{job=\"grafanadocs_hosted\"}",
+          "interval": "",
+          "legendFormat": "",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "title": "Number of Docs in \"/latest\"",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -2,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "average FRE",
+          "mappings": [],
+          "max": 40,
+          "min": 35,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 19
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "average_fre{job=\"grafanadocs_hosted\"}",
+          "interval": "",
+          "legendFormat": "",
+          "queryType": "randomWalk",
+          "refId": "A"
+        }
+      ],
+      "title": "Average FRE for \"/latest\"",
+      "type": "timeseries"
     }
   ],
   "schemaVersion": 30,
@@ -451,12 +631,12 @@
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Grafana Documentation",
   "uid": "mw15BHknk",
-  "version": 13
+  "version": 16
 }
