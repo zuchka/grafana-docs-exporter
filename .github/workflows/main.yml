@@ -1,17 +1,23 @@
+name: Is Organization Member Example
+
 on:
   issues:
     types: [opened, labeled]
 
 jobs:
-  hello_world_job:
+  is-member:
+    name: Is org member?
     runs-on: ubuntu-latest
-    name: A job to say hello
     steps:
-      - name: Hello world action step
-        id: hello
-        uses: railwayapp/community-actions@v1.1
+      - name: Check if organization member
+        id: is_organization_member
+        if: github.event.action == 'opened'
+        uses: zuchka/is-organization-member
         with:
-          who-to-greet: 'Mona the Octocat'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          organization: railwayapp
+          username: ${{ github.event.issue.user.login }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Comment for external
+        if: |
+          ${{ steps.is_organization_member.outputs.result == 'false' }}
+        run: echo User Does Not Belong to testorg. result = ${{ steps.is_organization_member.outputs.result}}
