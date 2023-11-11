@@ -14,10 +14,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Check if organization member
         id: is_organization_member
-        uses: zuchka/community-actions@v1.1.6
+        uses: zuchka/community-actions@v1.1.7
         with:
-          org: railwayapp
           username: zuchka
-          token: ${{ secrets.GITHUB_TOKEN }}
+          teammates: zuchka|20k-ultra|foo
       - name: Create Comment for external
         run: echo "${{ steps.is_organization_member.outputs.result}}"
