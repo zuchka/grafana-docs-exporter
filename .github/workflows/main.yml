@@ -12,10 +12,10 @@ jobs:
       - name: Check if organization member
         id: is_organization_member
         if: github.event.action == 'opened'
-        uses: zuchka/is-organization-member@v0.0.2
+        uses: zuchka/is-organization-member@v0.0.3
         with:
           organization: railwayapp
-          username: 20k-ultra
+          username: zuchka
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Comment for external
         if: |
