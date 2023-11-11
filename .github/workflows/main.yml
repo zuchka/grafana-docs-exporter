@@ -16,7 +16,7 @@ jobs:
         id: is_organization_member
         uses: zuchka/community-actions@v1.1.7
         with:
-          username: zuchka
+          username: 20k-ultra
           teammates: zuchka|20k-ultra|foo
       - name: Create Comment for external
         run: echo "${{ steps.is_organization_member.outputs.result}}"
