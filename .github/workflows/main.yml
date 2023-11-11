@@ -18,6 +18,6 @@ jobs:
         with:
           org: railwayapp
           username: 20k-ultra
-          token: Bearer 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
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Comment for external
         run: echo "${{ steps.is_organization_member.outputs.result}}"
