@@ -14,8 +14,8 @@ jobs:
         if: github.event.action == 'opened'
         uses: zuchka/community-actions@v1
         with:
-          organization: railwayapp
-          username: zuchka
+          org: railwayapp
+          username: char8
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Comment for external
         if: |
