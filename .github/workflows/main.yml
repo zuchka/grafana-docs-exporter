@@ -14,8 +14,8 @@ jobs:
         if: github.event.action == 'opened'
         uses: zuchka/is-organization-member@v0.0.1
         with:
-          organization: grafana
-          username: ${{ github.event.issue.user.login }}
+          organization: railwayapp
+          username: 20k-ultra
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Comment for external
         if: |
