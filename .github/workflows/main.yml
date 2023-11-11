@@ -17,7 +17,7 @@ jobs:
         uses: zuchka/community-actions@v1.1.4
         with:
           org: railwayapp
-          username: zuchka
+          username: 20k-ultra
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Comment for external
         run: echo "${{ steps.is_organization_member.outputs.result}}"
