@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Check if organization member
         id: is_organization_member
-        uses: zuchka/community-actions@v0.0.13
+        uses: zuchka/community-actions@v0.0.14
         env:
           GH_EVENT_NAME: ${{ toJson(github.event_name) }}
           GH_REPO: ${{ toJson(github.repository) }}
@@ -30,10 +30,6 @@ jobs:
       - name: Create Comment 2
         if: ${{ steps.is_organization_member.outputs.result == 'true' }}
         run: echo TRUE
-      - name: Author Association
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github.event.issue.author_association) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -58,11 +54,3 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJson(matrix) }}
         run: echo "$MATRIX_CONTEXT"
-
-      - name: Show default environment variables
-        run: |
-          echo "The job_id is: $GITHUB_JOB"   # reference the default environment variables
-          echo "The id of this action is: $GITHUB_ACTION"   # reference the default environment variables
-          echo "The run id is: $GITHUB_RUN_ID"
-          echo "The GitHub Actor's username is: $GITHUB_ACTOR"
-          echo "GitHub SHA: $GITHUB_SHA"
