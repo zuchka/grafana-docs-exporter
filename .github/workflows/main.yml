@@ -3,6 +3,8 @@ name: Is Organization Member Example
 on:
   issues:
     types: [opened, labeled]
+  pull_request:
+    types: [opened, labeled]
 
 jobs:
   is-member:
