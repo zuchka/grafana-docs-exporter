@@ -20,7 +20,7 @@ jobs:
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
       - name: Create Comment
         if: |
-          ${{ steps.is_organization_member.outputs.result == false }}
+          !${{ steps.is_organization_member.outputs.result }}
         run: echo User Does Not Belong to testorg
       - name: Create Comment 2
         if: |
