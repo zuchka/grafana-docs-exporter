@@ -18,11 +18,11 @@ jobs:
         id: is_organization_member
         uses: zuchka/community-actions@v0.0.17
         env:
-          GH_EVENT_NAME: ${{ toJson(github.event_name) }}
-          GH_REPO: ${{ toJson(github.repository) }}
-          GH_ISSUE_URL: ${{ toJson(github.event.issue.html_url) }}
-          GH_ISSUE_TITLE: ${{ toJson(github.event.issue.title) }}
-          GH_ISSUE_BODY: ${{ toJson(github.event.issue.body) }}    
+          GH_EVENT_NAME: ${{ github.event_name }}
+          GH_REPO: ${{ github.repository }}
+          GH_ISSUE_URL: ${{ github.event.issue.html_url }}
+          GH_ISSUE_TITLE: ${{ github.event.issue.title }}
+          GH_ISSUE_BODY: ${{ github.event.issue.body }}    
         with:
           username: ${{ github.event.issue.user.login }}
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
