@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Check if organization member
         id: is_organization_member
-        uses: zuchka/community-actions@v0.0.16
+        uses: zuchka/community-actions@v0.0.17
         env:
           GH_EVENT_NAME: ${{ toJson(github.event_name) }}
           GH_REPO: ${{ toJson(github.repository) }}
