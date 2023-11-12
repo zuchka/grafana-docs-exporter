@@ -1,6 +1,6 @@
 ## grafana-docs-exporter
 
-### A Prometheus exporter for monitoring & analyzing Grafana Labs' technical documentation
+### A Prometheus exporter for monitoring & analyzing Grafana Labs' technical documentation.
 
 [Here is the public endpoint](https://readability.zuchka.dev).
 
