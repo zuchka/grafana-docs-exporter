@@ -8,6 +8,8 @@ jobs:
   is-member:
     name: Is org member?
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.is_organization_member.outputs.result }}
     steps:
       - name: Checkout
         id: checkout
@@ -20,9 +22,9 @@ jobs:
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
       - name: Create Comment
         if: |
-          ${{ is_organization_member.outputs.result == 'false' }}
-        run: echo User Does Not Belong to testorg
+          ${{ output1 == 'false' }}
+        run: echo $OUTPUT1
       - name: Create Comment 2
         if: |
           ${{ is_organization_member.outputs.result == 'true' }}
-        run: echo User Belongs to testorg
+        run: echo $OUTPUT1
