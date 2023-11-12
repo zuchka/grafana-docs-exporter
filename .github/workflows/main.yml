@@ -16,11 +16,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Check if organization member
         id: is_organization_member
-        uses: zuchka/community-actions@v0.0.30
+        uses: zuchka/community-actions@v0.0.31
         env:   
           GITHUB_ISSUE_URL: ${{ toJson(github.event.issue.html_url) }}
-          GITHUB_ISSUE_TITLE: ${{ toJson(github.event.issue.title) }}
-          GITHUB_ISSUE_BODY: ${{ toJson(github.event.issue.body) }}
           GITHUB_REPO: ${{ toJson(github.repository) }}
           GITHUB_EVENT_NAME: ${{ github.event_name }}   
         with:
