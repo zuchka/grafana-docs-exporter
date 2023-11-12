@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Check if organization member
         id: is_organization_member
-        uses: zuchka/community-actions@v0.0.7
+        uses: zuchka/community-actions@v0.0.8
         with:
           username: ${{ github.event.issue.user.login }}
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
       - name: Create Comment
-        if: ${{ steps.is_organization_member.outputs.result == false }}
+        if: ${{ steps.is_organization_member.outputs.result == 'false' }}
         run: echo FALSE
       - name: Create Comment 2
-        if: ${{ steps.is_organization_member.outputs.result == true }}
+        if: ${{ steps.is_organization_member.outputs.result == 'true' }}
         run: echo TRUE
