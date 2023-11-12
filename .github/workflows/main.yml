@@ -30,3 +30,12 @@ jobs:
         if: ${{ steps.is_org_member.outputs.result == 'false' }}
         with:
           labels: community
+      - name: Add initial comment
+        uses: actions-ecosystem/action-create-comment@v1
+        if: ${{ steps.is_org_member.outputs.result == 'false' }}
+        with:
+          github_token: ${{ secrets.github_token }}
+          body: |
+            Hello, @${{ github.actor }}! Thanks for your submission. 
+            
+            Our team will respond soon. If you need more immediate help, try our Forum or our Discord. Thanks!
