@@ -24,3 +24,5 @@ jobs:
       - name: Create Comment 2
         if: ${{ steps.is_organization_member.outputs.result == 'true' }}
         run: echo TRUE
+      - name: get info
+        run: echo ${{ github.repository.id }} && echo ${{ github.repository.id }}
