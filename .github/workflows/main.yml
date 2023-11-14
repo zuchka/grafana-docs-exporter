@@ -2,9 +2,11 @@ name: Is Org Member
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened, edited]
   pull_request:
-    types: [opened, labeled]
+    types: [opened, edited]
+  issue_comment:
+    types: [opened, edited]
 
 jobs:
   is-member:
@@ -16,15 +18,16 @@ jobs:
         uses: actions/checkout@v4
       - name: Is org member?
         id: is_org_member
-        uses: zuchka/community-actions@v0.0.2
+        uses: zuchka/community-actions@v0.0.3
         env:   
           GITHUB_ISSUE_URL: ${{ toJson(github.event.issue.html_url) }}
+          GITHUB_PR_URL: ${{ toJson(github.event.pull_request.html_url) }}
           GITHUB_REPO: ${{ toJson(github.repository) }}
           GITHUB_EVENT_NAME: ${{ toJson(github.event_name) }}
         with:
-          username: ${{ github.event.issue.user.login }}
+          username: foo
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
-          webhook: https://discord.com/api/webhooks/886039948032090152/TN0AU9rQs3bzWfIR-enPZp9xAW2XeOzYiCQH4Y_W6MX-ABjKaKzsJOTp_psayU_Z8H-f
+          webhook: https://discord.com/api/webhooks/1174127777235087360/P9TUjZyf54gQUhr-eqIEhp_-c5ewg5Peh3OwIxHhfVi8Rnn5boIUkKkFErZ0IK1ijn1O
       - name: Add label
         uses: actions-ecosystem/action-add-labels@v1
         if: ${{ steps.is_org_member.outputs.result == 'false' }}
