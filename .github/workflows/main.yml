@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Is org member?
         id: is_org_member
-        uses: zuchka/community-actions@v0.0.3
+        uses: zuchka/community-actions@v0.0.4
         env:   
           GITHUB_ISSUE_URL: ${{ toJson(github.event.issue.html_url) }}
           GITHUB_PR_URL: ${{ toJson(github.event.pull_request.html_url) }}
@@ -27,7 +27,7 @@ jobs:
         with:
           username: foo
           teammates: 20k-ultra|char8|coffee-cup|dbanys|FarazPatankar|gschier|half0wl|JakeCooper|jitachi|melissa-hale|ndneighbor|ohrgaard|pierre-borckmans|railway-bot|tacLog|trif0lium|zuchka
-          webhook: https://discord.com/api/webhooks/1174127777235087360/P9TUjZyf54gQUhr-eqIEhp_-c5ewg5Peh3OwIxHhfVi8Rnn5boIUkKkFErZ0IK1ijn1O
+          webhook: https://discord.com/api/webhooks/1174144680104038511/D8RTqckekpv1KfCmVp3kcfFSvV35MavPSuO3FHHxlXoxK8lM5DGwuZLI-XjhTQWB5m8D
       - name: Add label
         uses: actions-ecosystem/action-add-labels@v1
         if: ${{ steps.is_org_member.outputs.result == 'false' }}
